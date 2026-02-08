@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.SQUARE - Brasserie & Pizzeria | Barlassina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF9F0;
+            --dark-brown: #2A1810;
+            --warm-red: #C84B31;
+            --gold: #D4A574;
+            --soft-gray: #F5F5F5;
+            --charcoal: #1A1A1A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 249, 240, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--warm-red);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-brown);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--warm-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--warm-red);
+        }
+
+        .btn-prenota {
+            background: var(--warm-red);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(200, 75, 49, 0.3);
+        }
+
+        .btn-prenota:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 75, 49, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-brown);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 95vh;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(200, 75, 49, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-50px, -30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-brown);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text h1 span {
+            color: var(--warm-red);
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            color: var(--charcoal);
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--warm-red);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(200, 75, 49, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(200, 75, 49, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark-brown);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--dark-brown);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--dark-brown);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            color: var(--warm-red);
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--dark-brown);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.9;
+            opacity: 0.9;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--warm-red), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .about-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark-brown);
+        }
+
+        .about-card p {
+            color: var(--charcoal);
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        /* Menu Moments */
+        .menu-moments {
+            background: var(--dark-brown);
+            color: white;
+            padding: 8rem 5%;
+        }
+
+        .moments-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-moments .section-label {
+            color: var(--gold);
+        }
+
+        .menu-moments .section-title,
+        .menu-moments .section-description {
+            color: white;
+        }
+
+        .moments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            margin-top: 5rem;
+        }
+
+        .moment-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .moment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-color: var(--gold);
+        }
+
+        .moment-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--warm-red) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .moment-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .moment-card:hover .moment-image::after {
+            opacity: 1;
+        }
+
+        .moment-content {
+            padding: 2.5rem;
+        }
+
+        .moment-time {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .moment-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .moment-description {
+            line-height: 1.8;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .moment-price {
+            color: var(--warm-red);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-small {
+            background: transparent;
+            color: var(--gold);
+            padding: 0.8rem 1.8rem;
+            border: 1px solid var(--gold);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-small:hover {
+            background: var(--gold);
+            color: var(--dark-brown);
+        }
+
+        /* Promo Section */
+        .promo {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, var(--warm-red) 0%, #A63826 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .promo::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+
+        .promo-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+        }
+
+        .promo h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .promo p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--warm-red);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 5%;
+            background: var(--soft-gray);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .contact-item {
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--warm-red);
+        }
+
+        .contact-details h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-brown);
+        }
+
+        .contact-details p {
+            color: var(--charcoal);
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        .contact-details a {
+            color: var(--warm-red);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            opacity: 0.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links-center {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 4rem;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--warm-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(200, 75, 49, 0.4);
+        }
+
+        /* Language Selector */
+        .language-selector {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .lang-btn {
+            background: white;
+            color: var(--charcoal);
+            border: 2px solid #E5E5E5;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--warm-red);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: var(--warm-red);
+            color: white;
+            border-color: var(--warm-red);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: var(--warm-red);
+        }
+
+        .footer-info {
+            opacity: 0.7;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .moments-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reservation Section */
+        .reservation {
+            padding: 8rem 5%;
+            background: var(--cream);
+        }
+
+        .reservation-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .reservation-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .reservation-form-wrapper {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+        }
+
+        .reservation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-brown);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1rem 1.2rem;
+            border: 2px solid #E5E5E5;
+            border-radius: 12px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--warm-red);
+            box-shadow: 0 0 0 4px rgba(200, 75, 49, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--warm-red);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--warm-red) 0%, #A63826 100%);
+            color: white;
+            padding: 1.3rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(200, 75, 49, 0.3);
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(200, 75, 49, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-submit:hover .btn-icon {
+            transform: translateX(5px);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        .reservation-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--warm-red);
+        }
+
+        .info-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-brown);
+        }
+
+        .info-card p {
+            color: var(--charcoal);
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        .info-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--warm-red);
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .info-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            display: none;
+            animation: slideInDown 0.5s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .reservation-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">B.<span>SQUARE</span></div>
+            <ul class="nav-menu">
+                <li><a href="#home" data-i18n="nav-home">Home</a></li>
+                <li><a href="#chi-siamo" data-i18n="nav-about">Chi Siamo</a></li>
+                <li><a href="#menu" data-i18n="nav-menu">Menù</a></li>
+                <li><a href="#prenota" data-i18n="nav-book">Prenota</a></li>
+                <li><a href="#contatti" data-i18n="nav-contact">Contatti</a></li>
+                <li><a href="#prenota" class="btn-prenota" data-i18n="nav-book-now">Prenota Ora</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span data-i18n="hero-title-1">Il Gusto Della</span> <span data-i18n="hero-title-2">Tradizione</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero-subtitle">Dalla Mattina alla Sera, Il Tuo Punto di Riferimento a Barlassina</p>
+                <p class="hero-description">
+                    B.SQUARE nasce dal desiderio di creare un luogo che non sia solo un ristorante, 
+                    ma un punto d'incontro: accogliente come un caffè di quartiere, dinamico come un bistrot metropolitano, 
+                    autentico come una pizzeria di fiducia.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn-primary" data-i18n="btn-discover-menu">Scopri il Menù</a>
+                    <a href="#prenota" class="btn-secondary" data-i18n="btn-book-table">Prenota un Tavolo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-in" id="chi-siamo">
+        <div class="section-header">
+            <p class="section-label" data-i18n="about-label">Chi Siamo</p>
+            <h2 class="section-title" data-i18n="about-title">Siamo il Locale di Barlassina</h2>
+            <p class="section-description">
+                Dove ogni momento della giornata trova il suo sapore. 
+                Un'anima da brasserie con una forte vocazione alla pizza.
+            </p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">🏠</div>
+                <h3>Accogliente</h3>
+                <p>Un ambiente caldo e familiare dove sentirsi sempre a casa, dal mattino alla sera.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">⚡</div>
+                <h3>Dinamico</h3>
+                <p>L'energia di un bistrot contemporaneo che si adatta ad ogni tuo momento della giornata.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">✓</div>
+                <h3>Autentico</h3>
+                <p>Ingredienti selezionati e ricette genuine per un'esperienza culinaria vera e di qualità.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Moments -->
+    <section class="menu-moments fade-in" id="menu">
+        <div class="moments-container">
+            <div class="section-header">
+                <p class="section-label" data-i18n="menu-label">Il Nostro Menù</p>
+                <h2 class="section-title" data-i18n="menu-title">Ogni Momento Ha Il Suo Sapore</h2>
+                <p class="section-description">
+                    Dalla colazione alla cena, siamo sempre aperti per offrirti qualcosa di buono
+                </p>
+            </div>
+
+            <div class="moments-grid">
+                <div class="moment-card">
+                    <div class="moment-image">☕</div>
+                    <div class="moment-content">
+                        <p class="moment-time">06:00 - 11:00</p>
+                        <h3 class="moment-title">Colazione</h3>
+                        <p class="moment-description">
+                            Inizia la giornata con il profumo del caffè e la dolcezza delle nostre brioche: 
+                            classiche, farcite, integrali. Cappuccini cremosi, estratti di frutta e centrifughe.
+                        </p>
+                        <a href="#" class="btn-small">Vedi Menù</a>
+                    </div>
+                </div>
+
+                <div class="moment-card">
+                    <div class="moment-image" style="background: linear-gradient(135deg, #8B6F47 0%, #6B5437 100%);">🍴</div>
+                    <div class="moment-content">
+                        <p class="moment-time">12:00 - 15:00</p>
+                        <h3 class="moment-title">Pranzo</h3>
+                        <p class="moment-description">
+                            La tua pausa pranzo smart, gustosa e completa. 
+                            Diversi menù tra cui scegliere, a partire da soli 11€!
+                        </p>
+                        <p class="moment-price">Da 11€</p>
+                        <a href="#" class="btn-small">Vedi Menù</a>
+                    </div>
+                </div>
+
+                <div class="moment-card">
+                    <div class="moment-image" style="background: linear-gradient(135deg, #C84B31 0%, #A63826 100%);">🥂</div>
+                    <div class="moment-content">
+                        <p class="moment-time">18:00 - 20:00</p>
+                        <h3 class="moment-title">Aperitivo</h3>
+                        <p class="moment-description">
+                            Il momento perfetto per staccare e rilassarsi. 
+                            Cocktail, spritz, vini selezionati e una proposta food generosa.
+                        </p>
+                        <a href="#" class="btn-small">Vedi Menù</a>
+                    </div>
+                </div>
+
+                <div class="moment-card">
+                    <div class="moment-image" style="background: linear-gradient(135deg, #D4A574 0%, #B8956A 100%);">★</div>
+                    <div class="moment-content">
+                        <p class="moment-time">19:00 - 24:00</p>
+                        <h3 class="moment-title">Cena</h3>
+                        <p class="moment-description">
+                            La nostra vera anima: un impasto contemporaneo, leggero e fragrante, 
+                            con ingredienti freschi e scelti con cura. Carta vini selezionata.
+                        </p>
+                        <a href="#" class="btn-small">Vedi Menù</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="promo fade-in">
+        <div class="promo-content">
+            <div class="promo-icon">🎁</div>
+            <h2 data-i18n="promo-title">Offerta di Benvenuto</h2>
+            <p>
+                Ogni mese ti regaliamo una pizza diversa! 
+                Richiedi la promo e scopri cosa abbiamo preparato per te questo mese. 
+                Ti basterà scaricare il coupon e venire a trovarci.
+            </p>
+            <a href="#prenota" class="btn-white" data-i18n="btn-request-offer">Richiedi Offerta</a>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation fade-in" id="prenota">
+        <div class="reservation-container">
+            <div class="section-header">
+                <p class="section-label" data-i18n="reservation-label">Prenota</p>
+                <h2 class="section-title" data-i18n="reservation-title">Riserva il Tuo Tavolo</h2>
+                <p class="section-description">
+                    Compila il form e ti confermeremo la prenotazione al più presto
+                </p>
+            </div>
+
+            <div class="reservation-content">
+                <div class="reservation-form-wrapper">
+                    <form class="reservation-form" id="reservationForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="res-name">Nome e Cognome *</label>
+                                <input type="text" id="res-name" name="name" required placeholder="Mario Rossi">
+                            </div>
+                            <div class="form-group">
+                                <label for="res-phone">Telefono *</label>
+                                <input type="tel" id="res-phone" name="phone" required placeholder="+39 333 123 4567">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="res-email">Email *</label>
+                                <input type="email" id="res-email" name="email" required placeholder="mario.rossi@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="res-guests">Numero Ospiti *</label>
+                                <select id="res-guests" name="guests" required>
+                                    <option value="">Seleziona</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 persone</option>
+                                    <option value="3">3 persone</option>
+                                    <option value="4">4 persone</option>
+                                    <option value="5">5 persone</option>
+                                    <option value="6">6 persone</option>
+                                    <option value="7">7 persone</option>
+                                    <option value="8">8 persone</option>
+                                    <option value="8+">Più di 8 persone</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="res-date">Data *</label>
+                                <input type="date" id="res-date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="res-time">Orario *</label>
+                                <select id="res-time" name="time" required>
+                                    <option value="">Seleziona orario</option>
+                                    <optgroup label="Pranzo">
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="14:30">14:30</option>
+                                    </optgroup>
+                                    <optgroup label="Cena">
+                                        <option value="19:00">19:00</option>
+                                        <option value="19:30">19:30</option>
+                                        <option value="20:00">20:00</option>
+                                        <option value="20:30">20:30</option>
+                                        <option value="21:00">21:00</option>
+                                        <option value="21:30">21:30</option>
+                                        <option value="22:00">22:00</option>
+                                        <option value="22:30">22:30</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="res-notes">Note Aggiuntive</label>
+                            <textarea id="res-notes" name="notes" rows="4" placeholder="Allergie, intolleranze, richieste particolari..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="privacy" required>
+                                <span>Accetto la <a href="#" style="color: var(--warm-red); text-decoration: underline;">privacy policy</a> *</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <span data-i18n="btn-confirm">Conferma Prenotazione</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+
+                        <p class="form-note">* Campi obbligatori</p>
+                    </form>
+                </div>
+
+                <div class="reservation-info">
+                    <div class="info-card">
+                        <div class="info-icon">☎</div>
+                        <h3>Preferisci Chiamare?</h3>
+                        <p>Contattaci direttamente per prenotazioni immediate o per gruppi numerosi</p>
+                        <a href="tel:+390362525904" class="info-link">0362 525904</a>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">⏰</div>
+                        <h3>Orari Prenotazioni</h3>
+                        <p><strong>Pranzo:</strong> 12:00 - 15:00<br>
+                        <strong>Cena:</strong> 19:00 - 23:00</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Lunedì chiuso</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">★</div>
+                        <h3>Eventi Speciali</h3>
+                        <p>Per feste, compleanni o eventi aziendali contattaci via email</p>
+                        <a href="/cdn-cgi/l/email-protection#29595b4c47465d4853404647404b5b485a5a4c5b404c6941465d44484045074a4644" class="info-link">Scrivici</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact fade-in" id="contatti">
+        <div class="contact-container">
+            <div class="section-header">
+                <p class="section-label" data-i18n="contact-label">Contatti</p>
+                <h2 class="section-title" data-i18n="contact-title">Vieni a Trovarci</h2>
+                <p class="section-description">Siamo sempre pronti ad accoglierti</p>
+            </div>
+
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Indirizzo</h3>
+                        <p>Piazza Camillo Benso Conte di Cavour, 30<br>20825 Barlassina (MB)</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">☎</div>
+                    <div class="contact-details">
+                        <h3>Telefono</h3>
+                        <p><a href="tel:+390362525904">0362 525904</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><a href="/cdn-cgi/l/email-protection#94e4e6f1fafbe0f5eefdfbfafdf6e6f5e7e7f1e6fdf1d4fcfbe0f9f5fdf8baf7fbf9"><span class="__cf_email__" data-cfemail="b8c8caddd6d7ccd9c2d1d7d6d1dacad9cbcbddcad1ddf8d0d7ccd5d9d1d496dbd7d5">[email&#160;protected]</span></a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div class="contact-details">
+                        <h3>Orari di Apertura</h3>
+                        <p>
+                            <strong>Lunedì:</strong> Chiuso<br>
+                            <strong>Mar - Gio:</strong> 06:00 - 24:00<br>
+                            <strong>Ven - Sab:</strong> 06:00 - 02:00<br>
+                            <strong>Domenica:</strong> 07:00 - 24:00
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links-center">
+                <a href="https://www.instagram.com/b.squarebrasserie/" class="social-icon" target="_blank" title="Instagram">IG</a>
+                <a href="https://www.facebook.com/bsquarebrasserie/" class="social-icon" target="_blank" title="Facebook">FB</a>
+            </div>
+
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="it">🇮🇹 IT</button>
+                <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+                <button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">B.<span>SQUARE</span></div>
+            <p class="footer-info">
+                IL PANE DI ANNA S.R.L. | Piazza Camillo Benso Conte di Cavour, 30<br>
+                20825 Barlassina, Monza Brianza | IT04156020960<br><br>
+                © 2026 B.Square - Tutti i diritti riservati
+            </p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Set minimum date to today
+        const dateInput = document.getElementById('res-date');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
+
+        // Reservation form submission
+        const reservationForm = document.getElementById('reservationForm');
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get form data
+                const formData = new FormData(this);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                // Create email body
+                const emailSubject = `Nuova Prenotazione - ${data.name}`;
+                const emailBody = `
+NUOVA RICHIESTA DI PRENOTAZIONE
+================================
+
+DATI CLIENTE:
+Nome: ${data.name}
+Telefono: ${data.phone}
+Email: ${data.email}
+
+DETTAGLI PRENOTAZIONE:
+Data: ${data.date}
+Orario: ${data.time}
+Numero Ospiti: ${data.guests}
+
+${data.notes ? `NOTE:\n${data.notes}` : 'Nessuna nota aggiuntiva'}
+
+================================
+Questa prenotazione richiede conferma.
+Contattare il cliente al più presto.
+                `.trim();
+
+                // Create mailto link
+                const mailtoLink = `mailto:prenotazionibrasserie@hotmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+                // Show success message
+                const formWrapper = document.querySelector('.reservation-form-wrapper');
+                let successMsg = formWrapper.querySelector('.success-message');
+                
+                if (!successMsg) {
+                    successMsg = document.createElement('div');
+                    successMsg.className = 'success-message';
+                    formWrapper.insertBefore(successMsg, reservationForm);
+                }
+
+                successMsg.innerHTML = `
+                    <h3>✅ Richiesta Inviata!</h3>
+                    <p>Stiamo aprendo il tuo client email per completare la prenotazione.</p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">
+                        Ti contatteremo entro 24 ore per confermare la disponibilità.
+                    </p>
+                `;
+                successMsg.classList.add('show');
+
+                // Open mailto link
+                window.location.href = mailtoLink;
+
+                // Reset form after short delay
+                setTimeout(() => {
+                    this.reset();
+                }, 2000);
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMsg.classList.remove('show');
+                }, 5000);
+            });
+        }
+
+        // Language Translation System
+        const translations = {
+            it: {
+                'nav-home': 'Home', 'nav-about': 'Chi Siamo', 'nav-menu': 'Menù', 'nav-book': 'Prenota', 'nav-contact': 'Contatti',
+                'nav-book-now': 'Prenota Ora', 'hero-title-1': 'Il Gusto Della', 'hero-title-2': 'Tradizione',
+                'hero-subtitle': 'Dalla Mattina alla Sera, Il Tuo Punto di Riferimento a Barlassina',
+                'btn-discover-menu': 'Scopri il Menù', 'btn-book-table': 'Prenota un Tavolo',
+                'about-label': 'Chi Siamo', 'about-title': 'Siamo il Locale di Barlassina',
+                'menu-label': 'Il Nostro Menù', 'menu-title': 'Ogni Momento Ha Il Suo Sapore',
+                'promo-title': 'Offerta di Benvenuto', 'btn-request-offer': 'Richiedi Offerta',
+                'reservation-label': 'Prenota', 'reservation-title': 'Riserva il Tuo Tavolo',
+                'btn-confirm': 'Conferma Prenotazione', 'contact-label': 'Contatti', 'contact-title': 'Vieni a Trovarci'
+            },
+            en: {
+                'nav-home': 'Home', 'nav-about': 'About Us', 'nav-menu': 'Menu', 'nav-book': 'Book', 'nav-contact': 'Contact',
+                'nav-book-now': 'Book Now', 'hero-title-1': 'The Taste of', 'hero-title-2': 'Tradition',
+                'hero-subtitle': 'From Morning to Evening, Your Reference Point in Barlassina',
+                'btn-discover-menu': 'Discover Menu', 'btn-book-table': 'Book a Table',
+                'about-label': 'About Us', 'about-title': 'We Are Barlassina\'s Local',
+                'menu-label': 'Our Menu', 'menu-title': 'Every Moment Has Its Flavor',
+                'promo-title': 'Welcome Offer', 'btn-request-offer': 'Request Offer',
+                'reservation-label': 'Book', 'reservation-title': 'Reserve Your Table',
+                'btn-confirm': 'Confirm Reservation', 'contact-label': 'Contact', 'contact-title': 'Come Visit Us'
+            },
+            fr: {
+                'nav-home': 'Accueil', 'nav-about': 'Qui Sommes-Nous', 'nav-menu': 'Menu', 'nav-book': 'Réserver', 'nav-contact': 'Contact',
+                'nav-book-now': 'Réserver', 'hero-title-1': 'Le Goût de la', 'hero-title-2': 'Tradition',
+                'hero-subtitle': 'Du Matin au Soir, Votre Point de Référence à Barlassina',
+                'btn-discover-menu': 'Découvrir le Menu', 'btn-book-table': 'Réserver une Table',
+                'about-label': 'Qui Sommes-Nous', 'about-title': 'Nous Sommes le Local de Barlassina',
+                'menu-label': 'Notre Menu', 'menu-title': 'Chaque Moment a sa Saveur',
+                'promo-title': 'Offre de Bienvenue', 'btn-request-offer': 'Demander l\'Offre',
+                'reservation-label': 'Réserver', 'reservation-title': 'Réservez Votre Table',
+                'btn-confirm': 'Confirmer la Réservation', 'contact-label': 'Contact', 'contact-title': 'Venez Nous Voir'
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang]?.[key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-lang="${lang}"]`)?.classList.add('active');
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => changeLanguage(btn.getAttribute('data-lang')));
+        });
+
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && translations[savedLang]) changeLanguage(savedLang);
+    </script>
+</body>
+</html>
